@@ -241,7 +241,7 @@ mailcow-monitoring-v1.1/
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/linuser/Mailcow-Zabbix-Monitoring.git
+git clone https://github.com/VeryShuu/Mailcow-Zabbix-Monitoring
 cd Mailcow-Zabbix-Monitoring
 
 # 2. Run installer (checks required/optional dependencies automatically)
@@ -354,11 +354,3 @@ systemctl restart zabbix-agent2
 Initial release: 307 UserParameters, 29 collector modules, 71 triggers, 19 dashboards.
 
 ---
-
-## License
-
-**GPLv3** — This code must remain open source. When using, modifying or distributing, the original author must be credited.
-
-© 2026 Alexander Fox | PlaNet Fox — https://github.com/linuser/Mailcow-Zabbix-Monitoring
-
-Created with Open Source and ❤

@@ -1,6 +1,7 @@
 # Mailcow Monitoring v1.1 for Zabbix
 
 Complete monitoring solution for Mailcow-Dockerized with Zabbix Agent 2. 307 metrics, 71 triggers, 19 dashboards — secure by design, installed in 5 minutes.
+The main one is taken from here and refined https://github.com/linuser/Mailcow-Zabbix-Monitoring
 
 [Detailed Documentation](MAILCOW-MONITORING-DOKU.md)
 
@@ -75,7 +76,7 @@ Checks SPF, DKIM, DMARC plus DANE/TLSA, MTA-STS, TLS-RPT and BIMI. Trigger alert
 - Mailcow-Dockerized (running)
 - Zabbix Server + Zabbix Agent 2
 - Zabbix 7.0
-- **Required:** `python3`, `docker`
+- **Required:** `python3`, `docker`, `zabbix-get`
 - **Optional:** `dig` (dnsutils), `openssl`, `nc` (netcat), `pflogsumm`, `jq`
 
 ```bash
@@ -85,12 +86,12 @@ apt install pflogsumm dnsutils openssl netcat-openbsd jq
 ## Installation
 
 ```bash
-git clone https://github.com/linuser/Mailcow-Zabbix-Monitoring.git
+git clone https://github.com/VeryShuu/Mailcow-Zabbix-Monitoring
 cd Mailcow-Zabbix-Monitoring
 sudo ./install.sh
 ```
 
-The installer checks for required dependencies (`python3`, `docker`) and warns about optional ones (`dig`, `openssl`, `nc`, `pflogsumm`, `jq`).
+The installer checks for required dependencies (`python3`, `docker`, `zabbix-get`) and warns about optional ones (`dig`, `openssl`, `nc`, `pflogsumm`, `jq`).
 
 Then in Zabbix:
 1. **Data collection → Templates → Import** → select `templates/mailcow-complete-monitoring.yaml`
@@ -148,10 +149,3 @@ mailcow-monitoring/
 ```bash
 sudo ./uninstall.sh
 ```
-
-## License
-
-GPLv3 — code must remain open source and the original author must be credited.
-See [LICENSE](LICENSE) for details.
-
-**© 2026 Alexander Fox | PlaNet Fox** — Created with Open Source and ❤
