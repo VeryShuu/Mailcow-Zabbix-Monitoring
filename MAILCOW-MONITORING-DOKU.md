@@ -321,6 +321,7 @@ systemctl restart zabbix-agent2
 - **Bayes training:** `rspamc stat` requires a running Rspamd container
 - **Postscreen:** Values = 0 if Postscreen is not enabled in Postfix (not an error)
 - **Security Audit:** DANE/TLSA only on MX hostname, not per domain
+- **PTR check / corporate DNS:** If the server uses an internal/corporate DNS that does not have PTR records for public IPs, `check_ptr.sh` will return 0 (false negative). The script uses `@8.8.8.8` as the resolver to avoid this. If `8.8.8.8` is blocked by the corporate firewall, replace it with another public resolver (e.g. `@1.1.1.1`) in `check_ptr.sh`. Also note: the PTR check result is cached for 1 hour in `/var/tmp/ptr_check.cache` — delete this file after any configuration fix to force an immediate re-check.
 
 ---
 
@@ -341,6 +342,9 @@ systemctl restart zabbix-agent2
 **Architecture**
 - Added SIGTERM handler in `mailcow-collector.py`: cleans up all `.tmp` files on shutdown
 - Architecture diagram updated to show 4 separate cache files (added `mailcow-monitor-version.json`)
+
+**Bug Fixes**
+- `check_ptr.sh`: PTR lookup now uses `@8.8.8.8` as explicit resolver — fixes false negatives on servers with internal/corporate DNS that does not forward PTR queries for public IPs
 
 **Monitoring**
 - Quarantine SQL reduced from 3 queries to 2 (COUNT/age + spam/virus combined into one query)

@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Mailcow Monitoring v1.0 — a complete Zabbix monitoring solution for [Mailcow-Dockerized](https://mailcow.email/). Provides 307 UserParameters, 29 collector modules, 71 triggers, and 19 dashboards. Licensed under GPLv3.
+Mailcow Monitoring v1.1 — a complete Zabbix monitoring solution for [Mailcow-Dockerized](https://mailcow.email/). Provides 307 UserParameters, 29 collector modules, 71 triggers, and 19 dashboards. Licensed under GPLv3.
 
 ## Architecture
 
@@ -15,7 +15,7 @@ systemd timer (60s) → mailcow-collector.py (root)
     → Zabbix Agent 2 (zabbix user) → mailcow-reader.sh → reads JSON
 ```
 
-- **`scripts/mailcow-collector.py`** — main Python collector, runs as root, implements 29 monitoring modules. Single entry point for all metric collection.
+- **`scripts/mailcow-collector.py`** — main Python collector, runs as root, implements 29 monitoring modules. Single entry point for all metric collection. Has SIGTERM handler to clean up `.tmp` files on shutdown.
 - **`scripts/mailcow-reader.sh`** — JSON reader called by every UserParameter; uses embedded Python3 for safe value extraction (no shell injection).
 - **`scripts/mailcow-common.sh`** — shared shell library sourced by `check_*.sh` scripts; provides MySQL helper `_mysql()` and `get_mail_domains()`.
 - **`mailcow-zabbix.conf`** — all 307 Zabbix `UserParameter` definitions in one file; installed to `/etc/zabbix/zabbix_agent2.d/mailcow.conf`.
