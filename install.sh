@@ -232,7 +232,7 @@ PASS=0
 for key in postfix.process.running mailcow.rspamd.scanned mailcow.disk.root.used \
            mailcow.dovecot.running mailcow.version.current \
            mailcow.mailbox.total mailcow.collector.running; do
-    RESULT=$(zabbix_get -s 127.0.0.1 -k "$key" 2>&1)
+    RESULT=$(zabbix_get -s 127.0.0.1 -k "$key" 2>&1) || true
     if echo "$RESULT" | grep -q "Connection reset by peer"; then
         echo -e "  ${RED}✗ Agent rejected connection from 127.0.0.1${NC}"
         echo -e "  ${YELLOW}  → Add 127.0.0.1 to Server= in your Zabbix agent config and restart zabbix-agent2${NC}"
