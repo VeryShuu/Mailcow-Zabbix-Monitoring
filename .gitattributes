@@ -1,0 +1,9 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Scripts - preserve executable bit and use LF line endings
+*.sh text eol=lf
+*.py text eol=lf
+install.sh text eol=lf
+uninstall.sh text eol=lf
+test-complete.sh text eol=lf
