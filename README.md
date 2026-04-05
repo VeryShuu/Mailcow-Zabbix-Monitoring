@@ -91,6 +91,12 @@ cd Mailcow-Zabbix-Monitoring
 sudo ./install.sh
 ```
 
+If Mailcow is installed in a non-standard location, pass the path as an argument:
+
+```bash
+sudo ./install.sh /path/to/mailcow-dockerized
+```
+
 The installer checks for required dependencies (`python3`, `docker`, `zabbix-get`) and warns about optional ones (`dig`, `openssl`, `nc`, `pflogsumm`, `jq`).
 
 Then in Zabbix:

@@ -247,6 +247,11 @@ cd Mailcow-Zabbix-Monitoring
 # 2. Run installer (checks required/optional dependencies automatically)
 sudo ./install.sh
 
+# If Mailcow is in a non-standard location, pass the path as an argument:
+# sudo ./install.sh /path/to/mailcow-dockerized
+# Alternatively, use an environment variable:
+# sudo MAILCOW_DIR=/path/to/mailcow-dockerized ./install.sh
+
 # 3. Import template in Zabbix
 #    Data collection → Templates → Import
 #    File: templates/mailcow-complete-monitoring.yaml
